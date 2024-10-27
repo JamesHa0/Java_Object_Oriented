@@ -1,25 +1,62 @@
 package work19;
-//创建一个图书类，其中成员变量：id，price ,type类型,autor作者
-// a.创建集合1 装入4个当前图书对象
-// b.创建集合2 装入2个当前图书对象，其中一个与集合1当中的对象相同
-// c.比较两个集合,返回数据重复的数据个数
-// d.利用迭代器，遍历出集合1中的图书对象
-// e.利用高级for 遍历出集合2中的图书对象
-//用set完成
-public class Book {
+
+class Book {
     private String id;
     private String name;
     private Double price;
     private String type;
-    private String autor;
+    private String author;
 
-    public Book(String id, String name, Double price, String type, String autor) {
+    public Book(String id, String name, Double price, String type, String author) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.type = type;
-        this.autor = autor;
+        this.author = author;
     }
 
-    
+    public String getId() {
+        return id;
+    }
+
+    public String getname() {
+        return name;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass()!= o.getClass()) return false;
+
+        Book book = (Book) o;
+
+        if (id!= null?!id.equals(book.id) : book.id!= null) return false;
+        if (name!= null?!name.equals(book.name) : book.name!= null) return false;
+        if (price!= null && book.price!= null &&!price.equals(book.price)) return false;
+        if (type!= null?!type.equals(book.type) : book.type!= null) return false;
+        return author != null? author.equals(book.author) : book.author == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id!= null? id.hashCode() : 0;
+        result = 31 * result + (name!= null? name.hashCode() : 0);
+        result = 31 * result + (price!= null? price.hashCode() : 0);
+        result = 31 * result + (type!= null? type.hashCode() : 0);
+        result = 31 * result + (author != null? author.hashCode() : 0);
+        return result;
+    }
 }
+
