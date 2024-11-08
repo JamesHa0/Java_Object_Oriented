@@ -8,8 +8,16 @@ public class ThreadTest extends Thread {
     @Override
     public void run() {
         System.out.println("线程ID:"+this.getId()+" 线程名称:"+this.getName()+" 优先级:"+this.getPriority()+" -> 线程已启动");
-        for (int i = 0 ; i < 10;i++){
+        for (int i = 0 ; i < 100;i++){
             System.out.println(this.getName()+"运行第"+i+"次");
+//            if(i > 10){
+//                this.interrupt();
+//            }
+//            try {
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
         }
     }
 
@@ -18,7 +26,7 @@ public class ThreadTest extends Thread {
 
         new ThreadTest("MyThread 001").start();
 
-        for (int i = 0 ; i < 10;i++){
+        for (int i = 0 ; i < 100;i++){
             System.out.println(Thread.currentThread().getName()+"运行第"+i+"次");
         }
 
